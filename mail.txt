@@ -1,0 +1,7 @@
+mail.yandex.ru
+login: ruby-test-job
+pass: ruby-test-job-passwd
+
+mail.google.com
+login: ruby.test.job
+pass: ruby-test-job-passwd

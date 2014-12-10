@@ -1,0 +1,15 @@
+mailer:
+  service: smtp
+  host: 'localhost:3000'
+
+  sendmail:
+    location:  '/usr/sbin/sendmail'
+    arguments: '-i -t'
+
+  smtp:
+    address: smtp.gmail.com
+    port: 587
+    domain: example.com
+    user_name: ruby.test.job
+    password: ruby-test-job-passwd
+    authentication: plain

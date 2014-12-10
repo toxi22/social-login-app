@@ -9,6 +9,11 @@ $ bundle install
 $ rake db:migrate
 ```
 ## Usage
+For create 100 fake user:
 ```
-$ rake fake_users:create
+$ rake fake:create_users
+```
+For send fake email to ruby-test-job@yandex.ru from ruby.test.job@gmail.com.
+```
+$ rake fake:send_email
 ```
