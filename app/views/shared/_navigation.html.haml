@@ -1,0 +1,12 @@
+%header#top.navbar.navbar-static-top
+  .container
+    .navbar-header
+      = link_to t('.home'), root_path, class: 'navbar-brand'
+    %nav
+      .row
+        .col-md-10.col-sm-10.col-xs-6
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              = link_to t('.login'), new_user_session_path
+            %li
+              = link_to t('.registration'), new_user_registration_path

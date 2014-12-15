@@ -1,0 +1,9 @@
+ru:
+  layouts:
+    application:
+     title: "Приложение Rails"
+  shared:
+    navigation:
+      login: "Войти"
+      registration: "Регистрация"
+      home: "Главная"
