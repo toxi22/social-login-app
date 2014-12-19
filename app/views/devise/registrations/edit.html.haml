@@ -1,31 +1,34 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .field
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .field
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "off"
-  .actions
-    = f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+.container
+  .row.col-md-6.col-sm-6.col-md-offset-2.col-sm-offset-2
+    %h2.text-center
+      = t('.edit', name: resource.email)
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = devise_error_messages!
+      .field.form-group.text-center
+        .input-group
+          %span.input-group-addon.glyphicon.glyphicon-envelope
+          = f.email_field :email, autofocus: true, placeholder: t('.email'), class: 'form-control'
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %div
+          = t('.waiting_conformation', email: resource.unconfirmed_email)
+      .field.form-group.text-center
+        .input-group
+          %span.input-group-addon.glyphicon.glyphicon-eye-open
+          = f.password_field :password, autocomplete: :off, placeholder: t('.new_password'), class: 'form-control'
+      .field.form-group.text-center
+        .input-group
+          %span.input-group-addon.glyphicon.glyphicon-eye-open
+          = f.password_field :password_confirmation, autocomplete: :off, placeholder: t('.new_password_repeat'), class: 'form-control'
+      .field.form-group.text-center
+        .input-group
+          %span.input-group-addon.glyphicon.glyphicon-eye-open
+          = f.password_field :current_password, autocomplete: :off, placeholder: t('.current_password'), class: 'form-control'
+      .actions.form-group.text-center
+        = f.submit(class: 'btn btn-default', value: t('.update'))
+    %h3.text-center
+      = t('.cancel_account_text')
+    %div.text-center
+      #{button_to t('.cancel_account'), registration_path(resource_name), data: { confirm: t('.cancel_account_confirm') }, method: :delete, class: 'btn btn-default'}
+    %div.text-center
+      %br/
+      = link_to t('.back'), :back

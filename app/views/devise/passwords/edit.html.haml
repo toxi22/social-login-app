@@ -1,15 +1,18 @@
-%h2 Change your password
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  = f.hidden_field :reset_password_token
-  .field
-    = f.label :password, "New password"
-    %br/
-    = f.password_field :password, autofocus: true, autocomplete: "off"
-  .field
-    = f.label :password_confirmation, "Confirm new password"
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Change my password"
-= render "devise/shared/links"
+.container
+  .row.col-md-6.col-sm-6.col-md-offset-2.col-sm-offset-2
+    %h2.text-center
+      = t('.change_your_password')
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+      = devise_error_messages!
+      = f.hidden_field :reset_password_token
+      .field.form-group.text-center
+        .input-group
+          %span.input-group-addon.glyphicon.glyphicon-eye-open
+          = f.password_field :password, autofocus: true, autocomplete: :off, placeholder: t('.password'), class: 'form-control'
+      .field.form-group.text-center
+        .input-group
+          %span.input-group-addon.glyphicon.glyphicon-eye-open
+          = f.password_field :password_confirmation, autocomplete: :off, placeholder: t('.password_repeat'), class: 'form-control'
+      .actions.form-group.text-center
+        = f.submit(class: 'btn btn-default', value: t('.change_my_password'))
+    = render 'devise/shared/links'

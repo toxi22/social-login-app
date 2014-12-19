@@ -5,5 +5,6 @@ ru:
   shared:
     navigation:
       login: "Войти"
+      logout: "Выйти"
       registration: "Регистрация"
       home: "Главная"
