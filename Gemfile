@@ -26,18 +26,19 @@ gem 'spring', group: :development
 gem 'pry-rails', group: :development
 
 gem 'devise'
-
 gem 'faker'
-
 gem 'mail'
-
 gem 'rails_config'
-
 gem 'bootstrap-sass'
-
 gem 'autoprefixer-rails'
-
 gem 'haml-rails'
+
+gem 'omniauth'
+gem 'omniauth-google'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-vkontakte'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
