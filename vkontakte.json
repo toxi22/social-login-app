@@ -1,0 +1,43 @@
+{
+	"provider":"vkontakte",
+	"uid":"209844282",
+	"info":
+		{
+			"name":"Алексей Безруков",
+			"nickname":"",
+			"email":"2choirboy@gmail.com",
+			"first_name":"Алексей",
+			"last_name":"Безруков",
+			"image":"https://pp.vk.me/c419624/v419624282/4d54/zt3lmjmJrWM.jpg",
+			"location":"Россия, Биробиджан",
+			"urls":
+				{
+					"Vkontakte":"http://vk.com/lamaladie"
+				}
+		},
+	"credentials":
+		{
+			"token":"cff3037e68d92f6b73f964b1cf1103b90b14e58fa5ecc5025b8dad44e55588aa74f2785e658101f8978d6",
+			"expires_at":1421739172,
+			"expires":true
+		},
+	"extra":
+		{
+			"raw_info":
+				{
+					"id":209844282,
+					"first_name":"Алексей",
+					"last_name":"Безруков",
+					"sex":2,
+					"nickname":"",
+					"screen_name":"lamaladie",
+					"bdate":"25.12.1986",
+					"city":28,
+					"country":1,
+					"photo_50":"https://pp.vk.me/c419624/v419624282/4d54/zt3lmjmJrWM.jpg",
+					"photo_100":"https://pp.vk.me/c419624/v419624282/4d53/z-If301NsjE.jpg",
+					"photo_200_orig":"https://pp.vk.me/c419624/v419624282/4d50/htf44Qz3eZo.jpg",
+					"online":0
+				}
+		}
+}

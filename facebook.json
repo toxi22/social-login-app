@@ -1,0 +1,40 @@
+{
+	"provider":"facebook",
+	"uid":"1543617112560326",
+	"info":
+		{
+			"email":"choir-boy@mail.ru",
+			"name":"Alexey  Bezrukov",
+			"first_name":"Alexey",
+			"last_name":"Bezrukov",
+			"image":"http://graph.facebook.com/1543617112560326/picture",
+			"urls":
+				{
+					"Facebook":"https://www.facebook.com/app_scoped_user_id/1543617112560326/"
+				},
+			"verified":true
+		},
+	"credentials":
+		{
+			"token":"CAAVqxLhDy5QBANH4R9yF30wSGnXaRwgIv924WYyH1t8jrhIHYotizelqfGuLYmm46yIxovW9OD1lbh1EdfLoV19lLuZAzn1rVESFMh3oZByAJZBD1VfZBsy8s9hdFA40IZAOUUSZBM1CdpmzxjZCsv7HTviE4TiNimBiAIJMKed1BG8fZCoGHZCOlkVXJ4piOr9eaqhFJnv0YDUwZB0v14V0RH",
+			"expires_at":1426818379,
+			"expires":true
+		},
+	"extra":
+		{
+			"raw_info":
+				{
+					"id":"1543617112560326",
+					"email":"choir-boy@mail.ru",
+					"first_name":"Alexey",
+					"gender":"male",
+					"last_name":"Bezrukov",
+					"link":"https://www.facebook.com/app_scoped_user_id/1543617112560326/",
+					"locale":"ru_RU",
+					"name":"Alexey  Bezrukov",
+					"timezone":10,
+					"updated_time":"2014-05-18T04:26:26+0000",
+					"verified":true
+				}
+		}
+}
