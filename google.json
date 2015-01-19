@@ -1,0 +1,11 @@
+{
+	"kind":"plus#personOpenIdConnect",
+	"sub":"101784428738550508976",
+	"name":"Тест Тестович",
+	"given_name":"Тест",
+	"family_name":"Тестович",
+	"picture":"https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg?sz=50",
+	"email":"ruby.test.job@gmail.com",
+	"email_verified":"true",
+	"locale":"ru"
+}
