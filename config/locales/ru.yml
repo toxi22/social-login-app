@@ -8,3 +8,12 @@ ru:
       logout: "Выйти"
       registration: "Регистрация"
       home: "Главная"
+  omniauth_callbacks:
+    google_oauth2:
+      duplicate_social_account: "Аккаунт социальной сети уже привязан к другой учетной записи"
+    twitter:
+      duplicate_social_account: "Аккаунт социальной сети уже привязан к другой учетной записи"
+    facebook:
+      duplicate_social_account: "Аккаунт социальной сети уже привязан к другой учетной записи"
+    vkontakte:
+      duplicate_social_account: "Аккаунт социальной сети уже привязан к другой учетной записи"

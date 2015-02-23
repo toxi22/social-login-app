@@ -18,7 +18,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
           user = User.update_social_network_from_omniauth(env['omniauth.auth'], current_user)
           user.save
         else
-          # TODO Generate error
+          flash[:alert] = t('.duplicate_social_account')
           user = current_user
         end
       end
@@ -28,7 +28,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if current_user.nil?
         sign_in_and_redirect(user)
       else
-        sign_in user
         redirect_to edit_user_registration_path
       end
     else
@@ -51,5 +50,4 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   alias_method :facebook, :all
   alias_method :vkontakte, :all
   alias_method :twitter, :all
-  alias_method :passthru, :all
 end

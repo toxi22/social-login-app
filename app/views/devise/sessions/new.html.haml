@@ -3,6 +3,7 @@
     %h2.text-center
       = t('.login')
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = render partial: 'the_notification/form', locals: { object: resource }
       .field.form-group.text-center
         .input-group
           %span.input-group-addon.glyphicon.glyphicon-envelope

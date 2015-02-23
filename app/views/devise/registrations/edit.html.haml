@@ -3,7 +3,7 @@
     %h2.text-center
       = t('.edit', name: resource.email)
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-      = devise_error_messages!
+      = render partial: 'the_notification/form', locals: { object: resource }
       .field.form-group.text-center
         .input-group
           %span.input-group-addon.glyphicon.glyphicon-envelope
@@ -28,9 +28,9 @@
     %div.text-center
       - resource_class.omniauth_providers.each do |provider|
         - if current_user.credentials.where(provider: provider).exists?
-          = link_to "Remove #{provider.to_s.titleize} to account", unbind_path(provider)
+          = link_to t('.remove_social', provider: provider.to_s.titleize), unbind_path(provider)
         - else
-          = link_to "Add #{provider.to_s.titleize} to account", omniauth_authorize_path(resource_name, provider)
+          = link_to t('.add_social', provider: provider.to_s.titleize), omniauth_authorize_path(resource_name, provider)
         %br/
     %h3.text-center
       = t('.cancel_account_text')

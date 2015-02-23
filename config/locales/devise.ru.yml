@@ -1,6 +1,7 @@
 # Русский перевод для https://github.com/plataformatec/devise/blob/6b0d11ed7a457ef1a338718e2e1819aeb25e943d/config/locales/en.yml (3.4.0)
 # Другие переводы на http://github.com/plataformatec/devise/wiki/I18n
 
+
 ru:
   devise:
     confirmations:
@@ -65,6 +66,8 @@ ru:
         cancel_account_confirm: "Вы действительно хотите удалить аккаунт?"
         cancel_account_text: "Надоело?"
         back: "Назад"
+        remove_social: "Удалить привязку к %{provider}"
+        add_social: "Привязать аккаунт к %{provider}"
       signed_up: "Добро пожаловать! Вы успешно зарегистрировались."
       signed_up_but_inactive: "Вы успешно зарегистрировались. Тем не менее, Вы не можете войти, потому что Ваша учетная запись еще не активирована."
       signed_up_but_locked: "Вы успешно зарегистрировались. Тем не менее, Вы не можете войти, потому что Ваша учетная запись заблокирована."
@@ -78,6 +81,7 @@ ru:
         new_password: "Забыли пароль?"
         new_confirmation: "Не получили письмо подтверждения?"
         new_unlock: "Не получили инструкции по разблокировки?"
+        sign_in_with: "Войти через %{provider}"
     sessions:
       new:
         email: "E-mail"

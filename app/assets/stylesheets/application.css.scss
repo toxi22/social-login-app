@@ -11,9 +11,12 @@
  * file per style scope.
  *
  *= require_self
+ *= require the_notification/vendors/toastr
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 header {
   background: #F5F5F5;
 }
