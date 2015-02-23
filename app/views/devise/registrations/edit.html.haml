@@ -25,6 +25,13 @@
           = f.password_field :current_password, autocomplete: :off, placeholder: t('.current_password'), class: 'form-control'
       .actions.form-group.text-center
         = f.submit(class: 'btn btn-default', value: t('.update'))
+    %div.text-center
+      - resource_class.omniauth_providers.each do |provider|
+        - if current_user.credentials.where(provider: provider).exists?
+          = link_to "Remove #{provider.to_s.titleize} to account", unbind_path(provider)
+        - else
+          = link_to "Add #{provider.to_s.titleize} to account", omniauth_authorize_path(resource_name, provider)
+        %br/
     %h3.text-center
       = t('.cancel_account_text')
     %div.text-center

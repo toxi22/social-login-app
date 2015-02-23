@@ -33,6 +33,19 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.timestamps
     end
 
+    create_table :credentials do |t|
+      t.references :user
+
+      t.string :provider
+      t.string :uid
+
+      t.string :expires_at
+      t.text   :access_token
+      t.text   :access_token_secret
+
+      t.timestamps
+    end
+
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
     add_index :users, :confirmation_token,   unique: true

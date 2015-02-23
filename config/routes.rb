@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+  devise_scope :user do
+    get 'omniauth_callbacks/unbind/:provider' => 'omniauth_callbacks#unbind', as: :unbind
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
