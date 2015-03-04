@@ -1,16 +1,10 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def all
-    binding.pry
-
     @omniauth = env['omniauth.auth']
     @credintial = Credential.where(provider: @omniauth.provider, uid: @omniauth.uid).first
-
-    find_or_new_user unless current_user
-    edit_social_user if current_user
-
-    return sign_in_new_user unless @user.persisted?
-    sign_in_or_redirect if @user.persisted?
+    current_user ? edit_social_user : find_or_new_user
+    @user.persisted? ? sign_in_or_redirect : sign_in_new_user
   end
 
   def failure
@@ -24,8 +18,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def find_or_new_user
-    return find_user if @credintial
-    new_user unless @credintial
+    @credintial ? find_user : new_user
   end
   def new_user
     @user = User.new_user_from_omniauth(@omniauth)
@@ -56,8 +49,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def sign_in_or_redirect
-    return sign_in_and_redirect(@user) unless current_user
-    redirect_to edit_user_registration_path  if current_user
+    current_user ? redirect_to(edit_user_registration_path) : sign_in_and_redirect(@user)
   end
 
   def unbind
