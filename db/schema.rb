@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20141203102247) do
 
-  create_table "credentials", force: true do |t|
+  create_table "credentials", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "provider"
     t.string   "uid"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20141203102247) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
