@@ -2,8 +2,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def all
     @omniauth = env['omniauth.auth']
-    @credintial = Credential.where(provider: @omniauth.provider, uid: @omniauth.uid).first
-    current_user ? edit_social_user : find_or_new_user
+    @credential = Credential.where(provider: @omniauth.provider, uid: @omniauth.uid).first
+    current_user ? social_network_data_processing : find_or_create_user
     @user.persisted? ? sign_in_or_redirect : sign_in_new_user
   end
 
@@ -11,16 +11,19 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     super
   end
 
-  def edit_social_user
-    return add_social unless @credintial
-    return update_social unless @credintial && (current_user.id == @credintial.user_id)
-    wrong_social unless @credintial && (current_user.id != @credintial.user_id)
+  def social_network_data_processing
+    if @credential
+      current_user.id == @credential.user_id ? update_social_network_data : wrong_social_network_data
+    else
+      add_social_network_data
+    end
   end
 
-  def find_or_new_user
-    @credintial ? find_user : new_user
+  def find_or_create_user
+    @credential ? find_user : create_user
   end
-  def new_user
+
+  def create_user
     @user = User.new_user_from_omniauth(@omniauth)
   end
 
@@ -28,19 +31,19 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.where(email: @omniauth.info.email).first
   end
 
-  def add_social
+  def add_social_network_data
     @user = User.bind_social_network_from_omniauth(@omniauth, current_user)
     @user.save
   end
 
-  def update_social
+  def update_social_network_data
     @user = User.update_social_network_from_omniauth(@omniauth, current_user)
     @user.save
   end
 
-  def wrong_social
-    flash[:alert] = t('.duplicate_social_account')
-    @user = current_user
+  def wrong_social_network_data
+    @user = @credential.user
+    sign_out current_user
   end
 
   def sign_in_new_user
