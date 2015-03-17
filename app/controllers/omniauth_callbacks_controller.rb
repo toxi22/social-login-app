@@ -24,7 +24,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def create_user
-    @user = User.new_user_from_omniauth(@omniauth)
+    @user = User.create_user_from_omniauth(@omniauth)
   end
 
   def find_user
@@ -48,7 +48,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def sign_in_new_user
     @user.save
-    sign_in_and_redirect(@user)
+    sign_in @user
+    redirect_to edit_user_registration_path
   end
 
   def sign_in_or_redirect
