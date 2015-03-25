@@ -15,4 +15,5 @@ class OAuthTest
       p user.errors_messages
     end
   end
+  binding.pry
 end

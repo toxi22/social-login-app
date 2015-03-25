@@ -12,8 +12,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'spring', group: :development
-gem 'pry-rails', group: :development
-gem 'pry-byebug', group: :development
+gem 'pry-rails', group: [:development, :test]
+gem 'pry-byebug', group: [:development, :test]
 gem 'puma', group: :development
 
 gem 'devise'
