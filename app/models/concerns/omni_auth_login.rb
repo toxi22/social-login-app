@@ -6,7 +6,6 @@ module OmniAuthLogin
       user.password = Devise.friendly_token[0,10]
       auth.provider == 'twitter' ? user.email = "#{Devise.friendly_token[0,10]}@change.me" : user.email = auth.info.email
       user = User.bind_social_network_from_omniauth(auth, user)
-      # FIXME Panic
       user
     end
 
