@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 20141203102247) do
     t.string   "expires_at"
     t.text     "access_token"
     t.text     "access_token_secret"
+    t.string   "url"
+    t.string   "avatar_url"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -27,6 +30,8 @@ ActiveRecord::Schema.define(version: 20141203102247) do
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "avatar_url"
+    t.string   "name"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
