@@ -6,8 +6,12 @@
       = render partial: 'the_notification/form', locals: { object: resource }
       .field.form-group.text-center
         .input-group
+          %span.input-group-addon.glyphicon.glyphicon-user
+          = f.text_field :name, autofocus: true, placeholder: t('.name'), class: 'form-control'
+      .field.form-group.text-center
+        .input-group
           %span.input-group-addon.glyphicon.glyphicon-envelope
-          = f.email_field :email, autofocus: true, placeholder: t('.email'), class: 'form-control'
+          = f.email_field :email, placeholder: t('.email'), class: 'form-control'
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         %div
           = t('.waiting_conformation', email: resource.unconfirmed_email)

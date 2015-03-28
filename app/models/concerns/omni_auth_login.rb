@@ -12,9 +12,8 @@ module OmniAuthLogin
     end
 
     def bind_social_network_from_omniauth(auth, current_user)
-      credential = current_user.credentials.new(provider: auth.provider, uid: auth.uid,
-                                   access_token: auth.credentials.token,
-                                   name: auth.info.name, avatar_url: auth.info.image)
+      credential = current_user.credentials.new(provider: auth.provider, uid: auth.uid, access_token: auth.credentials.token,
+                                                name: auth.info.name, avatar_url: auth.info.image)
       case
         when auth.provider == 'twitter'
           credential.update_attributes(access_token_secret: auth.credentials.secret, url: auth.info.urls.Twitter)
