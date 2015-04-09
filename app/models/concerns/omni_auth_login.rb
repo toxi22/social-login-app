@@ -12,8 +12,25 @@ module OmniAuthLogin
     end
 
     def bind_social_network_from_omniauth(auth, current_user)
-      credential = current_user.credentials.new(provider: auth.provider, uid: auth.uid, access_token: auth.credentials.token,
-                                                name: auth.info.name, avatar_url: auth.info.image)
+      update_attr(auth, current_user.credentials.new(provider: auth.provider,
+                                                     uid: auth.uid,
+                                                     access_token: auth.credentials.token,
+                                                     name: auth.info.name,
+                                                     avatar_url: auth.info.image))
+      current_user
+    end
+
+    def unbind_social_network(current_user, provider)
+      current_user.credentials.where(provider: provider).first.destroy
+    end
+
+    def update_social_network_from_omniauth(auth, current_user)
+      update_attr(auth, current_user.credentials.where(provider: auth.provider).first)
+      current_user
+    end
+
+    def update_attr(auth, credential)
+      credential.update_attributes(name: auth.info.name, avatar_url: auth.info.image)
       case
         when auth.provider == 'twitter'
           credential.update_attributes(access_token_secret: auth.credentials.secret, url: auth.info.urls.Twitter)
@@ -24,16 +41,6 @@ module OmniAuthLogin
         when auth.provider == 'vkontakte'
           credential.update_attributes(expires_at: auth.credentials.expires_at, url: auth.info.urls.Vkontakte)
       end
-      current_user
-    end
-
-    def unbind_social_network(current_user, provider)
-      current_user.credentials.where(provider: provider).first.destroy
-    end
-
-    def update_social_network_from_omniauth(auth, current_user)
-      current_user.credentials.where(provider: auth.provider).first.update_attributes(expires_at: auth.credentials.expires_at, access_token: auth.credentials.token) unless auth.provider == 'twitter'
-      current_user
     end
   end
 end

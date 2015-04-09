@@ -3,6 +3,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def all
     @omniauth = env['omniauth.auth']
     @credential = Credential.where(provider: @omniauth.provider, uid: @omniauth.uid).first
+    @user_from_email = User.where(email: @omniauth.info.email).first
+
     current_user ? social_network_data_processing : find_or_create_user
     @user.save unless @user.persisted?
     sign_in @user
@@ -24,7 +26,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def find_or_create_user
     @credential ? find_user : create_user
   end
-#TODO case : есть пользователь который зарегистрировался по email, а после кто то заходит через соц сеть с таким же email-ом.
+
   def create_user
     @user = User.create_user_from_omniauth(@omniauth)
   end
